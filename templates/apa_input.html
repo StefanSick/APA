@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>APA Vote Counter</title>
+{% endblock %}#
+
+{% block body %}
+  <div class="container-1">
+    <h2>Insert the Article:</h2>
+    <form action="{{ url_for('apa') }}" method="post">
+      <textarea name="text" rows="10" cols="50"></textarea>
+      <br>
+      <button type="submit">Collect Votes</button>
+    </form>
+  </div>
+{% endblock %}

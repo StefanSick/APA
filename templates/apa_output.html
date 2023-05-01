@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Vote Results</title>
+{% endblock%}
+{% block body %}
+    <div class="red-bar"><h1>APA</h1>
+    </div>
+    <div class="tab">
+      <div class="tab-content">
+        <div class="tab-header">
+          <!--This code creates a paragraph element with an ID of "text_apa". It then takes the value of the "text_apa" variable, removes all newline characters from it using a regular expression, and sets the resulting string as the text content of the paragraph element. -->
+          <h2>Input Text:</h2>
+        </div>
+        <p id="text_apa"></p>
+        <script>
+          var text = "{{ text_apa }}";
+          var cleanedText = text.replace(/\n/g, "");
+          document.getElementById("text_apa").textContent = cleanedText;
+        </script>
+      </div>
+      <div class="tab-content">
+        <div class="tab-header">
+          <h2>Votes:</h2>
+        </div>
+        <ul>
+          {% for key, value in apa.items() %}
+            <li>{{ key }}: {{ value }}%</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="go-back">
+      <a href="{{ url_for('apa') }}"><button>Go Back</button></a>
+    </div>
+  <!--This code gets the value of the "apa_list" variable, replaces each occurrence of its elements in the HTML content of an element with ID "text_apa" with the same text wrapped in HTML "mark" tags, and updates the HTML content of the element with the modified text.-->
+<script>
+      const apaList = {{ apa_list|tojson }} //declares a constant variable apaList and assigns the value of apa_list variable, which is passed as JSON data
+      var text = document.getElementById("text_apa") //retrieves the element with the ID "text_apa" 
+      var innerHTML = text.innerHTML //gets the HTML content of the text element 
+ //replaces all occurrences of the current element of apaList in the innerHTML string with the same text wrapped in "mark" tags, and assigns the resulting string to the innerHTML_new variable
+      for (var i = 0; i < apaList.length; i++) {
+        innerHTML_new = innerHTML.replace(new RegExp(apaList[i], 'g'), '<mark>' + apaList[i] + '</mark>');
+      } 
+      text.innerHTML = innerHTML_new
+</script>
+{% endblock%}
