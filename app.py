@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__, template_folder='templates')
 
-openai.api_key = "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"
+openai.api_key = ""
 
 
 def apa_votes(text):
