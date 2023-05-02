@@ -1,7 +1,7 @@
 
 import ast
 import openai
-openai.api_key = "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"
+openai.api_key = ""
 def apa_highlightsssss(text_2):
     apa_list=[]
 
